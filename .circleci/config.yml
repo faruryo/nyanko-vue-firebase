@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: devillex/docker-firebase
+
+    working_directory: ~/workspace
+
+    steps:
+      - checkout
+
+      - run:
+          name: npm install
+          command: npm install
+
+      - run:
+          name: Deploy Firebase Functions
+          command: firebase deploy --only hosting --token=$FIREBASE_DEPLOY_TOKEN
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
