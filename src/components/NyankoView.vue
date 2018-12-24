@@ -33,6 +33,7 @@ import { firestore } from '../plugins/firebase'
 
 export default {
   name: 'NyankoView',
+  title: 'NyankoView',
   data () {
     return {
       headers: [],

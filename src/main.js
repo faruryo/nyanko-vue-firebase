@@ -11,6 +11,15 @@ Vue.config.productionTip = false
 
 Vue.use(VueFirestore)
 
+Vue.mixin({
+  created: function () {
+    let { title } = this.$options
+    if (title) {
+      document.title = title
+    }
+  }
+})
+
 new Vue({
   router,
   store,
