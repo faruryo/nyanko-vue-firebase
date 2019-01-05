@@ -7,6 +7,8 @@
           slot="activator"
           icon
           large
+          href="https://github.com/faruryo/nyanko-vue-firebase"
+          target="_blank"
         >
           <v-icon large>code</v-icon>
         </v-btn>

@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     getRoute (name) {
-      for (var i = 0; i < this.$router.options.routes.length; i++) {
+      for (let i = 0; i < this.$router.options.routes.length; i++) {
         if (this.$router.options.routes[i].name === name) {
           return this.$router.options.routes[i]
         }
