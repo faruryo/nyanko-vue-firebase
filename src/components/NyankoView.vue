@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import { firestore } from '../plugins/firebase'
+import Firebase from '@/plugins/firebase'
+let firestore = Firebase.getFirestore()
 
 export default {
   name: 'NyankoView',
