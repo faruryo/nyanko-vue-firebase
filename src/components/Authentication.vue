@@ -8,8 +8,8 @@
         icon>
         <v-avatar>
           <img
-            :src="user.photoURL"
-            :alt="user.displayName"
+            :src="userPhotoURL"
+            :alt="userName"
           >
         </v-avatar>
       </v-btn>
@@ -38,26 +38,29 @@
 
 <script>
 import Firebase from '@/plugins/firebase'
+import { mapState } from 'vuex'
+
 export default {
   name: 'authentication',
   created: function () {
     Firebase.onAuth()
   },
   computed: {
-    user () {
-      return this.$store.getters.user
-    },
-    userStatus () {
-      return this.$store.getters.isSignedIn
-    }
+    ...mapState('auth', {
+      userStatus: 'status',
+      userName: 'displayName',
+      userPhotoURL: 'photoURL'
+    })
   },
   methods: {
     doLogin () {
       Firebase.signIn()
+      this.$router.push('/')
     },
     // ログアウト処理
     doLogout () {
       Firebase.signOut()
+      this.$router.push('/')
     }
   }
 }

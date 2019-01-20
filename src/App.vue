@@ -7,7 +7,7 @@
     >
       <v-list>
         <RouterLink
-          v-for="link in navlinks"
+          v-for="link in getNavlinks"
           :key="link"
           :linkname="link"
         >
@@ -39,6 +39,7 @@
 <script>
 import Authentication from '@/components/Authentication'
 import RouterLink from '@/components/RouterLink'
+import { mapState } from 'vuex'
 
 export default {
   name: 'App',
@@ -48,12 +49,24 @@ export default {
   },
   data () {
     return {
-      drawer: null,
-      navlinks: [
-        'Home',
-        'NyankoView'
-      ]
+      drawer: null
     }
+  },
+  computed: {
+    ...mapState('auth', {
+      getNavlinks: state => {
+        if (state.status) {
+          return [
+            'Home',
+            'NyankoView'
+          ]
+        } else {
+          return [
+            'Home'
+          ]
+        }
+      }
+    })
   }
 }
 </script>
