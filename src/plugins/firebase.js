@@ -1,7 +1,7 @@
 import { firebase } from '@firebase/app'
 import '@firebase/auth'
 import '@firebase/firestore'
-import store from '@/plugins/store'
+import store from '@/store'
 
 const config = {
   apiKey: 'AIzaSyAqlnLB2uDtHClp-F6Dsxm4ZS0OUUuxCho',
@@ -31,7 +31,7 @@ export default {
   },
   onAuth () {
     firebase.auth().onAuthStateChanged(user => {
-      store.commit('onAuthStateChanged', user)
+      store.dispatch('auth/setAuthStatus', user)
     })
   },
   getFirestore () {

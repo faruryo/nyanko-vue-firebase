@@ -24,6 +24,29 @@
           icon="warning"
         >Your search for "{{ search }}" found no results.</v-alert>
       </v-data-table>
+      <v-dialog
+      v-model="dialog"
+      max-width="290"
+    >
+      <v-card>
+        <v-card-title class="headline">
+          Permission error
+        </v-card-title>
+        <v-card-text>
+          NyankoViewを読み込む権限がありません。ログインしてください。
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="green darken-1"
+            flat="flat"
+            @click="goHome"
+          >
+            OK
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     </v-app>
   </div>
 </template>
@@ -39,7 +62,13 @@ export default {
     return {
       headers: [],
       search: '',
-      isLoading: true
+      isLoading: true,
+      dialog: false
+    }
+  },
+  methods: {
+    goHome: function () {
+      this.$router.push('/')
     }
   },
   firestore () {
@@ -66,6 +95,12 @@ export default {
       .get()
       .then(doc => {
         this.headers = createHeaders(doc.data())
+      })
+      .catch(err => {
+        if (err.code === 'permission-denied') {
+          this.dialog = true
+        }
+        console.log(err)
       })
   }
 }
