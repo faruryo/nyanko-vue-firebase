@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@firebase/app": "0.6.9",
-    "@firebase/auth": "0.9.1",
+    "@firebase/auth": "0.14.9",
     "@firebase/firestore": "0.9.3",
     "core-js": "2.6.1",
     "material-design-icons-iconfont": "3.0.3",
