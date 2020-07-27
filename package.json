@@ -11,7 +11,7 @@
     "@firebase/app": "0.6.9",
     "@firebase/auth": "0.14.9",
     "@firebase/firestore": "0.9.3",
-    "core-js": "2.6.11",
+    "core-js": "3.6.5",
     "material-design-icons-iconfont": "3.0.3",
     "roboto-fontface": "*",
     "vue": "2.5.21",
