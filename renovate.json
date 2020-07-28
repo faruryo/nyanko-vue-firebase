@@ -6,7 +6,8 @@
     {
       "updateTypes": ["minor", "patch", "pin", "digest"],
       "schedule": ["on the first day of the month"],
-      "automerge": true
+      "automerge": true,
+      "assignees": ["faruryo"]
     }
   ]
 }
