@@ -12,7 +12,7 @@ const config = {
   messagingSenderId: '11443145407'
 }
 
-const settings = { timestampsInSnapshots: true }
+const settings = { }
 let firestore = null
 
 export default {

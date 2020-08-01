@@ -2,8 +2,8 @@
   <v-app>
     <v-navigation-drawer
       v-model="drawer"
-      clipped
-      app
+      absolute
+      temporary
     >
       <v-list>
         <RouterLink
@@ -14,24 +14,20 @@
         </RouterLink>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar
-      fixed
-      clipped-left
+    <v-app-bar
       app
       scroll-off-screen
-      :scroll-threshold="50"
+      scroll-threshold="50"
     >
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Nyanko</span>
-      </v-toolbar-title>
+      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <v-toolbar-title>Nyanko</v-toolbar-title>
       <v-spacer></v-spacer>
       <Authentication></Authentication>
 
-    </v-toolbar>
-    <v-content>
+    </v-app-bar>
+    <v-main>
       <router-view></router-view>
-    </v-content>
+    </v-main>
     <v-footer></v-footer>
   </v-app>
 </template>
@@ -47,11 +43,9 @@ export default {
     Authentication,
     RouterLink
   },
-  data () {
-    return {
-      drawer: null
-    }
-  },
+  data: () => ({
+    drawer: false
+  }),
   computed: {
     ...mapState('auth', {
       getNavlinks: state => {

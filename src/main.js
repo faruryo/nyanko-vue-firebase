@@ -4,9 +4,10 @@ import VueFirestore from 'vue-firestore'
 
 import router from '@/plugins/router'
 import store from '@/store'
-import '@/plugins/vuetify'
+import vuetify from '@/plugins/vuetify'
 
 import Firebase from '@/plugins/firebase'
+
 Firebase.init()
 
 Vue.config.productionTip = false
@@ -15,7 +16,7 @@ Vue.use(VueFirestore)
 
 Vue.mixin({
   created: function () {
-    let { title } = this.$options
+    const { title } = this.$options
     if (title) {
       document.title = title
     }
@@ -25,5 +26,6 @@ Vue.mixin({
 new Vue({
   router,
   store,
-  render: h => h(App)
+  vuetify,
+  render: (h) => h(App)
 }).$mount('#app')

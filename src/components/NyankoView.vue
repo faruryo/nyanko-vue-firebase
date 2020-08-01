@@ -3,19 +3,38 @@
     <v-app id="inspire">
       <v-card-title>
         <v-spacer></v-spacer>
-        <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details></v-text-field>
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+        ></v-text-field>
       </v-card-title>
       <v-data-table
         :headers="headers"
         :items="nyankos"
         :loading="isLoading"
         :search="search"
-        :rows-per-page-items="[10,20,30,40,50,{'text':'All','value':-1}]"
+        :footer-props="{
+          'items-per-page-options': [10,20,30,40,50,{'text':'All','value':-1}],
+          showFirstLastPage: true,
+        }"
         class="elevation-1"
       >
-        <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
-        <template slot="items" slot-scope="props">
-          <td v-for="header in headers" :key="header.value">{{ props.item[header.value] }}</td>
+        <v-progress-linear
+          slot="progress"
+          color="blue"
+          indeterminate
+        ></v-progress-linear>
+        <template
+          slot="items"
+          slot-scope="props"
+        >
+          <td
+            v-for="header in headers"
+            :key="header.value"
+          >{{ props.item[header.value] }}</td>
         </template>
         <v-alert
           slot="no-results"
@@ -25,35 +44,29 @@
         >Your search for "{{ search }}" found no results.</v-alert>
       </v-data-table>
       <v-dialog
-      v-model="dialog"
-      max-width="290"
-    >
-      <v-card>
-        <v-card-title class="headline">
-          Permission error
-        </v-card-title>
-        <v-card-text>
-          NyankoViewを読み込む権限がありません。ログインしてください。
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="green darken-1"
-            flat="flat"
-            @click="goHome"
-          >
-            OK
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+        v-model="dialog"
+        max-width="290"
+      >
+        <v-card>
+          <v-card-title class="headline">Permission error</v-card-title>
+          <v-card-text>NyankoViewを読み込む権限がありません。ログインしてください。</v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              color="green darken-1"
+              flat="flat"
+              @click="goHome"
+            >OK</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-app>
   </div>
 </template>
 
 <script>
 import Firebase from '@/plugins/firebase'
-let firestore = Firebase.getFirestore()
+const firestore = Firebase.getFirestore()
 
 export default {
   name: 'NyankoView',
@@ -106,8 +119,8 @@ export default {
 }
 
 function createHeaders (headersDocData) {
-  let headers = []
-  for (let key in headersDocData) {
+  const headers = []
+  for (const key in headersDocData) {
     if (typeof headersDocData[key] === 'string') {
       headers.push({
         text: headersDocData[key],

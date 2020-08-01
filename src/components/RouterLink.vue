@@ -1,12 +1,12 @@
 <template>
-  <v-list-tile :to="{path: getRoute(linkname)['path']}">
-    <v-list-tile-action>
+  <v-list-item :to="{path: getRoute(linkname)['path']}">
+    <v-list-item-action>
       <v-icon>{{ getRoute(linkname)['meta']['icon'] }}</v-icon>
-    </v-list-tile-action>
-    <v-list-tile-content>
-      <v-list-tile-title>{{ getRoute(linkname)['name'] }}</v-list-tile-title>
-    </v-list-tile-content>
-  </v-list-tile>
+    </v-list-item-action>
+    <v-list-item-content>
+      <v-list-item-title>{{ getRoute(linkname)['name'] }}</v-list-item-title>
+    </v-list-item-content>
+  </v-list-item>
 </template>
 
 <script>

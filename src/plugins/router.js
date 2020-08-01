@@ -11,13 +11,13 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: () => import('@/components/Home.vue'),
-      meta: { name: 'Home', icon: 'dashboard' }
+      meta: { name: 'Home', icon: 'mdi-view-dashboard' }
     },
     {
       path: '/NyankoView',
       name: 'NyankoView',
       component: () => import('@/components/NyankoView.vue'),
-      meta: { name: 'Nyankoview', icon: 'list' }
+      meta: { name: 'Nyankoview', icon: 'mdi-view-list' }
     }
   ]
 })

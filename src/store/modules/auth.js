@@ -16,7 +16,7 @@ const mutations = {
     state.status = user !== null
     if (state.status) {
       state.displayName = user.displayName
-      state.photoURL = user.photoURL
+      state.photoURL = user.providerData[0].photoURL
     } else {
       state.displayName = ''
       state.photoURL = ''
