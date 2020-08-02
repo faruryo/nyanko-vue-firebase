@@ -7,6 +7,8 @@ jobs:
     working_directory: ~/workspace
 
     steps:
+      - checkout
+
       - run:
           name: npm install
           command: npm install --unsafe
