@@ -11,7 +11,7 @@
     "@firebase/app": "0.6.9",
     "@firebase/auth": "0.14.9",
     "@firebase/firestore": "1.16.2",
-    "@mdi/font": "5.4.55",
+    "@mdi/font": "5.5.55",
     "material-design-icons-iconfont": "5.0.1",
     "roboto-fontface": "*",
     "vue": "2.6.11",
